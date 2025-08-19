@@ -13,12 +13,7 @@ public class LogService {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void sendLogForRegister(String topic, Payload payload) {
-        kafkaTemplate.send(topic, payload);
-        System.out.println("📤 Log sent to Kafka: " + payload);
-    }
-
-    public void sendLogForLogin(String topic, Payload payload) {
+    public void sendLog(String topic, Payload payload) {
         kafkaTemplate.send(topic, payload);
         System.out.println("📤 Log sent to Kafka: " + payload);
     }

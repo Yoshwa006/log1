@@ -1,12 +1,10 @@
-package com.example.demo.model;
+package com.example.main_consumer_service.model;
 
-import org.springframework.stereotype.Service;
 
-@Service
 public class Payload {
 
 
-    String serviceName = "user-service";
+    String serviceName;
     String event;
     String userID;
     String timestamp;
@@ -14,6 +12,13 @@ public class Payload {
     String message;
 
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public String getServiceName() {
         return serviceName;
@@ -21,14 +26,6 @@ public class Payload {
 
     public void setServiceName(String serviceName) {
         this.serviceName = serviceName;
-    }
-
-    public String getLevel() {
-        return level;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
     }
 
     public String getEvent() {
@@ -39,6 +36,14 @@ public class Payload {
         this.event = event;
     }
 
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
     public String getTimestamp() {
         return timestamp;
     }
@@ -47,12 +52,13 @@ public class Payload {
         this.timestamp = timestamp;
     }
 
-    public String getUserID() {
-        return userID;
+    public String getLevel() {
+        return level;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setLevel(String level) {
+        this.level = level;
     }
+
 
 }
