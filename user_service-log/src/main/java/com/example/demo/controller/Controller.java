@@ -46,6 +46,11 @@ public class Controller {
         } else {
             return "Deletion failed: User not found";
         }
+    }
 
+    @PostMapping("/test")
+    public String test(@RequestBody String message) {
+        mainService.test(message);
+        return "Test message sent successfully";
     }
 }

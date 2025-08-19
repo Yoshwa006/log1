@@ -27,7 +27,7 @@ public class MainService {
         payload.setMessage(message);
         payload.setLevel(level); // INFO, WARN, ERROR
 
-        logService.sendLog("user-logs", payload);
+        logService.sendLog("logs", payload);
     }
 
     public boolean register(Users user) {
@@ -73,5 +73,10 @@ public class MainService {
                     "WARN");
             return false;
         }
+    }
+
+    public String test(String message) {
+        logService.test(message);
+        return "Test message sent";
     }
 }

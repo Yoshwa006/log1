@@ -1,9 +1,11 @@
 package com.example.main_consumer_service.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Payload {
-
-
     String serviceName;
     String event;
     String userID;
