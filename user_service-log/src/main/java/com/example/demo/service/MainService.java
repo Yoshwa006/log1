@@ -29,7 +29,7 @@ public class MainService {
 
         Load log = new Load();
         log.setServiceName("user-service");
-        log.setTimestamp(LocalDateTime.now());
+        log.setTimestamp(String.valueOf(System.currentTimeMillis()));
         log.setMessage(message);
         log.setLevel(level);
         log.setPayload(payload);

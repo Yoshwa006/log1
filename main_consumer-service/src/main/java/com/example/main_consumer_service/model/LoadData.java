@@ -2,16 +2,19 @@ package com.example.main_consumer_service.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.time.LocalDateTime;
+
 
 //anga irundhu varadhu
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LoadData {
-    String serviceName;
-    String event;
-    String userID;
-    String timestamp;
-    String level;
-    String message;
+
+
+    private String serviceName;
+    private String level;
+    private String message;
+    private String timestamp;
+    private Object payload;
 
 
     public String getMessage() {
@@ -30,20 +33,12 @@ public class LoadData {
         this.serviceName = serviceName;
     }
 
-    public String getEvent() {
-        return event;
+    public String getLevel() {
+        return level;
     }
 
-    public void setEvent(String event) {
-        this.event = event;
-    }
-
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setLevel(String level) {
+        this.level = level;
     }
 
     public String getTimestamp() {
@@ -54,13 +49,15 @@ public class LoadData {
         this.timestamp = timestamp;
     }
 
-    public String getLevel() {
-        return level;
+    public Object getPayload() {
+        return payload;
     }
 
-    public void setLevel(String level) {
-        this.level = level;
+    public void setPayload(Object payload) {
+        this.payload = payload;
     }
+
+
 
 
 }

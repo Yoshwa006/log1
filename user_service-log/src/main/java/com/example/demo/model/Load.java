@@ -1,22 +1,18 @@
-package com.example.main_consumer_service.model;
+package com.example.demo.model;
 
-import jakarta.persistence.*;
+import org.springframework.stereotype.Service;
 
-//inga irundhu DB ku save panradhu
-@Entity
-@Table(name = "logs")
-public class Log {
+import java.time.LocalDateTime;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String serviceName;
-    String level;
-    String timestamp;
-    String message;
+@Service
+public class Load {
 
-    @Lob
-    String payload;
+
+    private String serviceName;
+    private String level;
+    private String message;
+    private String timestamp;
+    private Payload payload;
 
 
     public String getTimestamp() {
@@ -25,14 +21,6 @@ public class Log {
 
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getServiceName() {
@@ -59,14 +47,12 @@ public class Log {
         this.message = message;
     }
 
-    public String getPayload() {
+    public Payload getPayload() {
         return payload;
     }
 
-    public void setPayload(String payload) {
+    public void setPayload(Payload payload) {
         this.payload = payload;
     }
-
-
 
 }
