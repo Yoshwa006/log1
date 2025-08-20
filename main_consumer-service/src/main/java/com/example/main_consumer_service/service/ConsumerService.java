@@ -1,8 +1,9 @@
 package com.example.main_consumer_service.service;
 
-import com.example.main_consumer_service.dto.Dto;
-import com.example.main_consumer_service.model.Payload;
+import com.example.main_consumer_service.dto.Mapper;
+import com.example.main_consumer_service.model.LoadData;
 import com.example.main_consumer_service.model.Log;
+import com.example.main_consumer_service.model.Payload;
 import com.example.main_consumer_service.repo.LogRepo;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
@@ -17,16 +18,19 @@ public class ConsumerService {
     }
 
     @KafkaListener(topics = "logs", groupId = "g1")
-    public void consumeAndStore(Payload payload) {
+    public void consumeAndStore(LoadData loadData) {
 
-        System.out.println("RAW PAYLOAD: " + payload);
-        System.out.println("serviceName=" + payload.getServiceName());
-        System.out.println("event=" + payload.getEvent());
-        System.out.println("userId=" + payload.getUserID());
-        System.out.println("timestamp=" + payload.getTimestamp());
-        System.out.println("level=" + payload.getLevel());
-        System.out.println("message=" + payload.getMessage());
-        Log log = Dto.toLog(payload);
+        System.out.println("RAW PAYLOAD: " + loadData);
+        System.out.println("serviceName=" + loadData.getServiceName());
+        System.out.println("event=" + loadData.getEvent());
+        System.out.println("userId=" + loadData.getUserID());
+        System.out.println("timestamp=" + loadData.getTimestamp());
+        System.out.println("level=" + loadData.getLevel());
+        System.out.println("message=" + loadData.getMessage());
+        Payload payload = new Payload();
+        payload.setEvent(loadData.getEvent());
+        payload.setUserID(loadData.getUserID());
+        Log log = Mapper.toLog(loadData);
         logRepo.save(log);
     }
 

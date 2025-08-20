@@ -1,10 +1,13 @@
 package com.example.demo.service;
 
+import com.example.demo.model.Load;
 import com.example.demo.model.Payload;
 import com.example.demo.model.Users;
 import com.example.demo.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 public class MainService {
@@ -19,15 +22,19 @@ public class MainService {
     }
 
     private void sendLog(String event, String userId, String message, String level) {
+
         Payload payload = new Payload();
         payload.setEvent(event);
         payload.setUserID(userId);
-        payload.setServiceName("user-service");
-        payload.setTimestamp(String.valueOf(System.currentTimeMillis()));
-        payload.setMessage(message);
-        payload.setLevel(level); // INFO, WARN, ERROR
 
-        logService.sendLog("logs", payload);
+        Load log = new Load();
+        log.setServiceName("user-service");
+        log.setTimestamp(LocalDateTime.now());
+        log.setMessage(message);
+        log.setLevel(level);
+        log.setPayload(payload);
+
+        logService.sendLog("logs", log);
     }
 
     public boolean register(Users user) {

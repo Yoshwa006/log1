@@ -2,8 +2,7 @@ package com.example.main_consumer_service.model;
 
 import jakarta.persistence.*;
 
-
-@Entity
+//inga irundhu DB ku save panradhu
 @Table(name = "logs")
 public class Log {
 
@@ -11,41 +10,11 @@ public class Log {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String serviceName;
-    String event;
-    String userID;
+    String level;
     String timestamp;
     String message;
-    String level;
+    String payload;
 
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
-
-
-    public String getLevel() {
-        return level;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
-    }
 
     public String getTimestamp() {
         return timestamp;
@@ -53,6 +22,14 @@ public class Log {
 
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getServiceName() {
@@ -63,12 +40,30 @@ public class Log {
         this.serviceName = serviceName;
     }
 
-    public String getEvent() {
-        return event;
+    public String getLevel() {
+        return level;
     }
 
-    public void setEvent(String event) {
-        this.event = event;
+    public void setLevel(String level) {
+        this.level = level;
     }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getPayload() {
+        return payload;
+    }
+
+    public void setPayload(String payload) {
+        this.payload = payload;
+    }
+
+
 
 }
